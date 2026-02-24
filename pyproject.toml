@@ -4,11 +4,12 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "pydantic>=2.12.5",
+]
 
 [dependency-groups]
 dev = [
-    "pydantic>=2.12.5",
     "ruff>=0.15.2",
     "ty>=0.0.18",
 ]
@@ -28,17 +29,17 @@ ignore = ["E501"] # Line length is handled by the formatter
 quote-style = "double"
 indent-style = "space"
 
-# [tool.ty]
-# # The new Astral type checker config
-# typeCheckingMode = "standard"
+[tool.ty]
+# The new Astral type checker config
+typeCheckingMode = "standard"
 
-# [tool.ty.environment]
-# # Tells ty exactly which Python version to check against
-# python-version = "3.12"
+[tool.ty.environment]
+# Tells ty exactly which Python version to check against
+python-version = "3.12"
 
-# [tool.ty.analysis]
-# # Be strict: don't ignore files unless they are generated
-# exclude = [".venv", "build", "dist"]
+[tool.ty.analysis]
+# Be strict: don't ignore files unless they are generated
+exclude = [".venv", "build", "dist"]
 
 [tool.setuptools]
 packages = ["audit_tool"]
