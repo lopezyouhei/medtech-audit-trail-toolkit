@@ -1,0 +1,49 @@
+[project]
+name = "medtech-audit-trail-toolkit"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pydantic>=2.12.5",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
+]
+
+[tool.ruff]
+# The speed-demon linter/formatter config
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+# E: pycodestyle, F: Pyflakes, I: isort (imports), B: bugbear, UP: pyupgrade
+# "ALL" is also an option if you want to be extremely strict!
+select = ["E", "F", "I", "B", "UP"]
+ignore = ["E501"] # Line length is handled by the formatter
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# [tool.ty]
+# # The new Astral type checker config
+# typeCheckingMode = "standard"
+
+# [tool.ty.environment]
+# # Tells ty exactly which Python version to check against
+# python-version = "3.12"
+
+# [tool.ty.analysis]
+# # Be strict: don't ignore files unless they are generated
+# exclude = [".venv", "build", "dist"]
+
+[tool.setuptools]
+packages = ["audit_tool"]
+package-dir = {"" = "src"}
+
+[project.scripts]
+lint = "audit_tool.cli:lint"
+fix = "audit_tool.cli:fix"
